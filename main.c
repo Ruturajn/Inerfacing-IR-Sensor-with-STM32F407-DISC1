@@ -3,18 +3,18 @@
 
 void GPIO_Init();
 void EXTI0_Init();
-void TIM3_ms_Delay(uint8_t delay);
+void TIM3_ms_Delay(int delay);
 void NVIC_Init();
 void EXTI0_IRQHandler();
 
 void GPIO_Init(){
 	RCC->AHB1ENR |= 1;// Enable the GPIO port A clock
-	GPIOA->MODER |= (1<<14); //Configuring PA7 as output, if external LED needs to be connected
+	GPIOA->MODER |= (1<<14); //Configuring PA7 as output if external LED indication is required
 
-	//Since we require PA0 to be input we do no need to make any changes to GPIOA->MODER for configuring it
+	//Since we require PA0 to be input we do no make any changes to GPIOA->MODER
 }
 
-void TIM3_ms_Delay(uint8_t delay){
+void TIM3_ms_Delay(int delay){
 	RCC->APB1ENR |= (1<<1);
 	TIM3->PSC = 16000-1;
 	TIM3->ARR = (int)delay;
@@ -44,5 +44,6 @@ int main(){
 	GPIO_Init();
 	EXTI0_Init();
 	NVIC_Init();
-	while(1){}
+	while(1){
+	}
 }
