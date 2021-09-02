@@ -11,7 +11,7 @@ void GPIO_Init(){
 	RCC->AHB1ENR |= 1;// Enable the GPIO port A clock
 	GPIOA->MODER |= (1<<14); //Configuring PA7 as output, if external LED needs to be connected
 
-	//Since we require PA0 to be input we do no make any changes to GPIOA->MODER
+	//Since we require PA0 to be input we do no need to make any changes to GPIOA->MODER for configuring it
 }
 
 void TIM3_ms_Delay(uint8_t delay){
