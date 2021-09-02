@@ -5,7 +5,7 @@
 
 ![image](https://user-images.githubusercontent.com/56625259/131780781-91a44542-356f-4deb-b3ec-7a2c8e44bb54.png)
 
-In this project, the Obstacle LED on the IR Sensor module, and an external LED connected to PA7 glows when an obstacle is detected. This is achieved by configuring an external interrupt for the 'OUT' pin of the IR sensor module. When the IR sensor detects that something is nearby, it's 'OUT' pin goes low. Due to this, the'PA0' pin of the stm32f407 which is configured as an input, is connected to the 'OUT' pin of the sensor module. Whe the IR sensor module goes low, an external interrupt is generated, and the external LED connected to PA7 glows.
+In this project, the Obstacle LED on the IR Sensor module glows, and an external LED connected to PA7 toggles when an obstacle is detected. This is achieved by configuring an external interrupt for the 'OUT' pin of the IR sensor module. When the IR sensor detects that something is nearby, it's 'OUT' pin goes low. Due to this, the'PA0' pin of the stm32f407 which is configured as an input, is connected to the 'OUT' pin of the sensor module. Whe the IR sensor module goes low, an external interrupt is generated, and the external LED connected to PA7 glows.
 
 
 The connections made here are as follows,
