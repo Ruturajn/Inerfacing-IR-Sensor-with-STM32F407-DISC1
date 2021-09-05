@@ -15,13 +15,13 @@ void GPIO_Init(){
 }
 
 void TIM3_ms_Delay(int delay){
-	RCC->APB1ENR |= (1<<1);
-	TIM3->PSC = 16000-1;
-	TIM3->ARR = (int)delay;
+	RCC->APB1ENR |= (1<<1); //Enable the clock for TIM3
+	TIM3->PSC = 16000-1; //Set the clock frequency to 1KHz
+	TIM3->ARR = (int)delay; // Get the required delay from user
 	TIM3->CNT = 0;
-	TIM3->CR1 |= 1;
-	while(!(TIM3->SR & 1)){}
-	TIM2->SR &= ~(0x0001); //Reset the update interrupt flag
+	TIM3->CR1 |= 1; //Start the timer
+	while(!(TIM3->SR & 1)){} // Wait for the "Update Interrupt Flag"
+	TIM2->SR &= ~(0x0001); //Reset the update interrupt flag // Clear the "Update Interrupt Flag"
 }
 
 void EXTI0_Init(){
